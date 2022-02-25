@@ -1,5 +1,6 @@
 package com.generation.farmacia.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -77,6 +78,11 @@ public class ProdutoController {
 	@GetMapping("/nome-lab/{nome}-{laboratorio}")
 	public ResponseEntity<List<Produto>> getByNomeAndLaboratorioProduto(@PathVariable String nome, @PathVariable String laboratorio){
 		return ResponseEntity.ok(produtoRepository.findByNomeContainingIgnoreCaseAndLaboratorioContainingIgnoreCase(nome, laboratorio));
+	}
+	
+	@GetMapping("/preco/{inicio}-{fim}")
+	public ResponseEntity<List<Produto>> getByPrecoBetween(@PathVariable BigDecimal inicio, @PathVariable BigDecimal fim){
+		return ResponseEntity.ok(produtoRepository.findByPrecoGreaterThanAndPrecoLessThanOrderByPreco(inicio, fim));
 	}
 	
 	@DeleteMapping("/id/{id}")
