@@ -82,7 +82,7 @@ public class ProdutoController {
 	
 	@GetMapping("/preco/{inicio}-{fim}")
 	public ResponseEntity<List<Produto>> getByPrecoBetween(@PathVariable BigDecimal inicio, @PathVariable BigDecimal fim){
-		return ResponseEntity.ok(produtoRepository.findByPrecoGreaterThanAndPrecoLessThanOrderByPreco(inicio, fim));
+		return ResponseEntity.ok(produtoRepository.findByPrecoBetweenOrderByPreco(inicio, fim));
 	}
 	
 	@DeleteMapping("/id/{id}")
