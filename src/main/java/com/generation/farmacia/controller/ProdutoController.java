@@ -74,6 +74,11 @@ public class ProdutoController {
 				
 	}
 	
+	@GetMapping("/nome-lab/{nome}-{laboratorio}")
+	public ResponseEntity<List<Produto>> getByNomeAndLaboratorioProduto(@PathVariable String nome, @PathVariable String laboratorio){
+		return ResponseEntity.ok(produtoRepository.findByNomeContainingIgnoreCaseAndLaboratorioContainingIgnoreCase(nome, laboratorio));
+	}
+	
 	@DeleteMapping("/id/{id}")
 	public ResponseEntity<?> deleteProduto(@PathVariable Long id){
 		if (produtoRepository.existsById(id)) {
