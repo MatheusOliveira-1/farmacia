@@ -23,11 +23,15 @@ public class Usuario {
 	private Long id;
 	
 	@NotBlank (message = "O atributo nome é obrigatório")
-	@Size(max = 255, message = "A senha deve ter no mínimo 8 caractéres")
+	@Size(max = 255, message = "A nome deve ter no máximo 255 caractéres")
 	private String nome;
 	
+	@NotBlank (message = "O atributo email é obrigatório")
+	@Size(max = 255, message = "O email deve ter no máximo 255 caractéres")
+	private String email;
+	
 	@NotBlank (message = "O atributo senha é obrigatório")
-	@Size(min = 8, message = "O nome deve ter no máximo 255 caractéres")
+	@Size(min = 8, message = "O senha deve ter no mínimo 8 caractéres")
 	private String senha;
 	
 	private String foto;
