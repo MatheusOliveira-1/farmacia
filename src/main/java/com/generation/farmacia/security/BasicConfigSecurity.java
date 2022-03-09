@@ -25,7 +25,7 @@ public class BasicConfigSecurity extends WebSecurityConfigurerAdapter {
 		
 		auth.inMemoryAuthentication()
 		.withUser("root")
-		.authorities("ROLE_USER")
+		.authorities("ROLE_USER");
 	}
 	
 	@Bean
