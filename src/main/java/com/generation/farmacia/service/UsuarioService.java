@@ -22,7 +22,7 @@ public class UsuarioService {
 	
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario){
 		
-		if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
+		if(usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent()) {
 			
 			return Optional.empty();
 		}
@@ -36,7 +36,7 @@ public class UsuarioService {
 		
 		if(usuarioRepository.findById(usuario.getId()).isPresent()) {
 		
-		Optional<Usuario> buscaUsuario = usuarioRepository.findByEmail(usuario.getEmail());
+		Optional<Usuario> buscaUsuario = usuarioRepository.findByUsuario(usuario.getUsuario());
 		
 		if (buscaUsuario.isPresent() && (buscaUsuario.get().getId() != usuario.getId())) {
 			
@@ -55,7 +55,7 @@ public class UsuarioService {
 	
 	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
 		
-		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
+		Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
 		
 		if (usuario.isPresent()) {
 			
@@ -64,7 +64,7 @@ public class UsuarioService {
 				usuarioLogin.get().setId(usuario.get().getId());
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
-				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 				
 				return usuarioLogin;

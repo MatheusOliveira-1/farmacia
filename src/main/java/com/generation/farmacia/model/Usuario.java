@@ -28,7 +28,7 @@ public class Usuario {
 	
 	@NotBlank (message = "O atributo email é obrigatório")
 	@Size(max = 255, message = "O email deve ter no máximo 255 caractéres")
-	private String email;
+	private String usuario;
 	
 	@NotBlank (message = "O atributo senha é obrigatório")
 	@Size(min = 8, message = "O senha deve ter no mínimo 8 caractéres")
@@ -56,12 +56,14 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	
+
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
